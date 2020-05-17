@@ -1,16 +1,16 @@
 import java.util.ArrayList;
 
-public class Users {
+public class UserFactory {
 
     ArrayList<User> users;
     int id;
 
-    public Users(){
+    public UserFactory(){
         users = new ArrayList<>();
         id = 0;
     }
 
-    public Users(ArrayList<User> u){
+    public UserFactory(ArrayList<User> u){
         users = u;
         id = u.size();
     }
@@ -131,7 +131,7 @@ public class Users {
         if(o== null || getClass() != o.getClass()){
             return false;
         }
-        Users u = (Users) o;
+        UserFactory u = (UserFactory) o;
         return id == u.howManyUsers() && users.equals(u.getUsers());
     }
 }
