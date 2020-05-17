@@ -110,6 +110,20 @@ public class Users {
         }
     }
 
+    public boolean removeUser(User u){
+        return users.remove(u);
+    }
+
+    public User find(String u){
+        for(int i = 0; i<id; i++){
+            User temp = users.get(i);
+            if (temp.getUsername().equals(u)){
+                return temp;
+            }
+        }
+        return null;
+    }
+
     public boolean equals(Object o){
         if(this == o){
             return true;

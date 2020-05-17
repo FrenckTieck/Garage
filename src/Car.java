@@ -8,33 +8,33 @@ public abstract class Car {
     private int year;
     private double price;
     private double litres;
-    String Image;
+    String model;
     private Fuel fuel;
 
-    protected Car(int id, int y, double p, double l, String i, Fuel f){
+    protected Car(int id, int y, double p, double l, String m, Fuel f){
         this.id = id;
         year = y;
         price = p;
         litres = l;
-        Image = i;
+        model = m;
         fuel = f;
     }
 
-    protected Car(int id, int y, double p, double l, String i, String f){
+    protected Car(int id, int y, double p, double l, String m, String f){
         this.id = id;
         year = y;
         price = p;
         litres = l;
-        Image = i;
+        model = m;
         fuel = new Fuel(f);
     }
 
-    protected Car(int id, int y, double p, double l, String i, int f){
+    protected Car(int id, int y, double p, double l, String m, int f){
         this.id = id;
         year = y;
         price = p;
         litres = l;
-        Image = i;
+        model = m;
         fuel = new Fuel(f);
     }
 
@@ -68,6 +68,26 @@ public abstract class Car {
 
     public void setFuel(Fuel fuel) {
         this.fuel = fuel;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String m){
+        this.model = m;
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "id=" + id +
+                ", year=" + year +
+                ", price=" + price +
+                ", litres=" + litres +
+                ", model='" + model +
+                ", fuel=" + fuel.getFuel() +
+                '}';
     }
 
     public boolean equals(Object o){

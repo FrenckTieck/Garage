@@ -195,6 +195,47 @@ public class Factory {
         }
     }
 
+    public boolean removeCar(Car c) {
+        return cars.remove(c);
+    }
+
+    public Car find(String m) {
+        for(int i = 0; i < cars.size(); i++){
+            Car temp = cars.get(i);
+            if(temp.getModel().equals(m)){
+                return temp;
+            }
+        }
+        return null;
+    }
+
+    public String printCar(int i){
+        if(i >= 0 && i < cars.size()){
+            return cars.get(i).toString();
+        } else {
+            return "";
+        }
+    }
+
+    public double totalValue(){
+        double value = 0;
+        for(int i = 0; i < cars.size(); i++){
+            value += cars.get(i).getPrice();
+        }
+        return value;
+    }
+
+    public String printStockLevel(){
+        return "Total Cars: " + this.howManyCars() +
+                ", BMVV: " + this.howManyBMVV() +
+                ", AUDO: " + this.howManyAUDO() +
+                ", NISCAN: " + this.howManyNISCAN() +
+                ", VALVA: " + this.howManyVALVA() +
+                ", TOYO: " + this.howManyTOYO() +
+                ", CITVAN: " + this.howManyCIVAN() +
+                ", Total Value: " + this.totalValue();
+    }
+
     public boolean equals(Object o){
         if(this == o){
             return true;

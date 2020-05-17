@@ -2,33 +2,36 @@ import java.util.Calendar;
 
 public class CITVAN extends Car {
 
-    String model;
+    String image;
 
-    public CITVAN(int id, int y, double p, double l, String i, Fuel f, String m) {
+    public CITVAN(int id, int y, double p, double l, String m, Fuel f, String i) {
         super(id, 0000, p, l, i, f);
         int now = Calendar.getInstance().get(Calendar.YEAR);
         if(y >= 1931 && y <= now){
             this.setYear(y);
         }
-        model = m;
+        image = i;
+        this.setModel("CITVAN" + m);
     }
 
-    public CITVAN(int id, int y, double p, double l, String i, String f, String m) {
+    public CITVAN(int id, int y, double p, double l, String m, String f, String i) {
         super(id, 0000, p, l, i, f);
         int now = Calendar.getInstance().get(Calendar.YEAR);
         if(y >= 1931 && y <= now){
             this.setYear(y);
         }
-        model = m;
+        image = i;
+        this.setModel("CITVAN" + m);
     }
 
-    public CITVAN(int id, int y, double p, double l, String i, int f, String m) {
+    public CITVAN(int id, int y, double p, double l, String m, int f, String i) {
         super(id, 0000, p, l, i, f);
         int now = Calendar.getInstance().get(Calendar.YEAR);
         if(y >= 1931 && y <= now){
             this.setYear(y);
         }
-        model = m;
+        image = i;
+        this.setModel("CITVAN" + m);
     }
 
     public String getModel() {

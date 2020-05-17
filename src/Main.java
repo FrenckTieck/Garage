@@ -1,6 +1,7 @@
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class Main {
@@ -21,5 +22,14 @@ public class Main {
             System.out.println("You chose to open this file: " +
                     chooser.getSelectedFile().getName());
         }
+
+        try{
+            PrintWriter w = new PrintWriter("Printed Files/test.txt", "UTF-8");
+            w.println("test1");
+            w.close();
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
     }
 }
