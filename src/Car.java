@@ -1,3 +1,5 @@
+import javax.swing.*;
+import java.awt.*;
 import java.util.Arrays;
 
 public abstract class Car {
@@ -5,26 +7,30 @@ public abstract class Car {
     private int year;
     private double price;
     private double litres;
+    String Image;
     private Fuel fuel;
 
-    protected Car(int y, double p, double l, Fuel f){
+    protected Car(int y, double p, double l, String i, Fuel f){
         year = y;
         price = p;
         litres = l;
+        Image = i;
         fuel = f;
     }
 
-    protected Car(int y, double p, double l, String f){
+    protected Car(int y, double p, double l, String i, String f){
         year = y;
         price = p;
         litres = l;
+        Image = i;
         fuel = new Fuel(f);
     }
 
-    protected Car(int y, double p, double l, int f){
+    protected Car(int y, double p, double l, String i, int f){
         year = y;
         price = p;
         litres = l;
+        Image = i;
         fuel = new Fuel(f);
     }
 
