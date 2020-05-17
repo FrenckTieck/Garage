@@ -4,8 +4,8 @@ public class TOYO extends Car{
 
     String model;
 
-    public TOYO(int y, double p, double l, String i, Fuel f, String m) {
-        super(0000, p, l, i, f);
+    public TOYO(int id, int y, double p, double l, String i, Fuel f, String m) {
+        super(id, 0000, p, l, i, f);
         int now = Calendar.getInstance().get(Calendar.YEAR);
         if(y >= 1924 && y <= now){
             this.setYear(y);
@@ -13,8 +13,8 @@ public class TOYO extends Car{
         model = m;
     }
 
-    public TOYO(int y, double p, double l, String i, String f, String m) {
-        super(0000, p, l, i, f);
+    public TOYO(int id, int y, double p, double l, String i, String f, String m) {
+        super(id, 0000, p, l, i, f);
         int now = Calendar.getInstance().get(Calendar.YEAR);
         if(y >= 1931 && y <= now){
             this.setYear(y);
@@ -22,8 +22,8 @@ public class TOYO extends Car{
         model = m;
     }
 
-    public TOYO(int y, double p, double l, String i, int f, String m) {
-        super(0000, p, l, i, f);
+    public TOYO(int id, int y, double p, double l, String i, int f, String m) {
+        super(id, 0000, p, l, i, f);
         int now = Calendar.getInstance().get(Calendar.YEAR);
         if(y >= 1931 && y <= now){
             this.setYear(y);

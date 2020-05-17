@@ -100,6 +100,16 @@ public class Users {
         id = users.size();
     }
 
+    public boolean removeUser(int i){
+        if(i >= 0 && i < id){
+            users.remove(i);
+            id--;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public boolean equals(Object o){
         if(this == o){
             return true;

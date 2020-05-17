@@ -4,13 +4,15 @@ import java.util.Arrays;
 
 public abstract class Car {
 
+    int id;
     private int year;
     private double price;
     private double litres;
     String Image;
     private Fuel fuel;
 
-    protected Car(int y, double p, double l, String i, Fuel f){
+    protected Car(int id, int y, double p, double l, String i, Fuel f){
+        this.id = id;
         year = y;
         price = p;
         litres = l;
@@ -18,7 +20,8 @@ public abstract class Car {
         fuel = f;
     }
 
-    protected Car(int y, double p, double l, String i, String f){
+    protected Car(int id, int y, double p, double l, String i, String f){
+        this.id = id;
         year = y;
         price = p;
         litres = l;
@@ -26,7 +29,8 @@ public abstract class Car {
         fuel = new Fuel(f);
     }
 
-    protected Car(int y, double p, double l, String i, int f){
+    protected Car(int id, int y, double p, double l, String i, int f){
+        this.id = id;
         year = y;
         price = p;
         litres = l;

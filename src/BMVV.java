@@ -4,8 +4,8 @@ public class BMVV extends Car {
 
     String model;
 
-    public BMVV(int y, double p, double l, String i, Fuel f, String m) {
-        super(0000, p, l, i, f);
+    public BMVV(int id, int y, double p, double l, String i, Fuel f, String m) {
+        super(id, 0000, p, l, i, f);
         int now = Calendar.getInstance().get(Calendar.YEAR);
         if(y >= 1928 && y <= now){
             this.setYear(y);
@@ -13,8 +13,8 @@ public class BMVV extends Car {
         model = m;
     }
 
-    public BMVV(int y, double p, double l, String i, String f, String m) {
-        super(0000, p, l, i, f);
+    public BMVV(int id, int y, double p, double l, String i, String f, String m) {
+        super(id, 0000, p, l, i, f);
         int now = Calendar.getInstance().get(Calendar.YEAR);
         if(y >= 1928 && y <= now){
             this.setYear(y);
@@ -22,8 +22,8 @@ public class BMVV extends Car {
         model = m;
     }
 
-    public BMVV(int y, double p, double l, String i, int f, String m) {
-        super(0000, p, l, i, f);
+    public BMVV(int id, int y, double p, double l, String i, int f, String m) {
+        super(id, 0000, p, l, i, f);
         int now = Calendar.getInstance().get(Calendar.YEAR);
         if(y >= 1928 && y <= now){
             this.setYear(y);

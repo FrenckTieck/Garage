@@ -3,47 +3,60 @@ import java.util.ArrayList;
 public class Factory {
 
     ArrayList<Car> cars;
+    int id;
 
     public Factory(){
         cars = new ArrayList<Car>();
+        id = 0;
     }
 
     public Factory(ArrayList<Car> c){
         cars = c;
+        id = c.size();
     }
 
     public void addBMVV(int y, double p, double l, String i, int f, String m) {
-        BMVV b = new BMVV(y, p, l, i, f, m);
+        id++;
+        BMVV b = new BMVV(id, y, p, l, i, f, m);
         cars.add(b);
     }
 
     public void addAUDO(int y, double p, double l, String i, int f, String m) {
-        AUDO a = new AUDO(y, p, l, i, f, m);
+        id++;
+        AUDO a = new AUDO(id, y, p, l, i, f, m);
         cars.add(a);
     }
 
     public void addNISCAN(int y, double p, double l, String i, int f, String m) {
-        NISCAN n = new NISCAN(y, p, l, i, f, m);
+        id++;
+        NISCAN n = new NISCAN(id, y, p, l, i, f, m);
         cars.add(n);
     }
 
     public void addVALVA(int y, double p, double l, String i, int f, String m) {
-        VALVA v = new VALVA(y, p, l, i, f, m);
+        id++;
+        VALVA v = new VALVA(id, y, p, l, i, f, m);
         cars.add(v);
     }
 
     public void addTOYO(int y, double p, double l, String i, int f, String m) {
-        TOYO t = new TOYO(y, p, l, i, f, m);
+        id++;
+        TOYO t = new TOYO(id, y, p, l, i, f, m);
         cars.add(t);
     }
 
     public void addCITVAN(int y, double p, double l, String i, int f, String m) {
-        CITVAN c = new CITVAN(y, p, l, i, f, m);
+        id++;
+        CITVAN c = new CITVAN(id, y, p, l, i, f, m);
         cars.add(c);
     }
 
     public int howManyCars(){
         return cars.size();
+    }
+
+    public ArrayList<Car> getCars(){
+        return cars;
     }
 
     public int howManyBMVV(){
@@ -170,5 +183,26 @@ public class Factory {
             }
         }
         return b;
+    }
+
+    public boolean removeCar(int i){
+        if(i>= 0 && i < cars.size()){
+            cars.remove(i);
+            id--;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean equals(Object o){
+        if(this == o){
+            return true;
+        }
+        if(o== null || getClass() != o.getClass()){
+            return false;
+        }
+        Factory f = (Factory) o;
+        return id == f.howManyCars() && cars.equals(f.getCars());
     }
 }
