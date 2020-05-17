@@ -1,7 +1,10 @@
+import java.util.ArrayList;
+
 public class Main {
 
     public static void main(String args[]) {
-        Fuel f = new Fuel(2);
-        System.out.println(f.getFuel());
+        ArrayList<Integer> test = new ArrayList<Integer>();
+        test.add(1);
+        System.out.println(test.size());
     }
 }

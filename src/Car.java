@@ -1,27 +1,27 @@
 import java.util.Arrays;
 
-public class Car {
+public abstract class Car {
 
-    public int year;
-    public double price;
-    public double litres;
-    public Fuel fuel;
+    private int year;
+    private double price;
+    private double litres;
+    private Fuel fuel;
 
-    public Car(int y, double p, double l, Fuel f){
+    protected Car(int y, double p, double l, Fuel f){
         year = y;
         price = p;
         litres = l;
         fuel = f;
     }
 
-    public Car(int y, double p, double l, String f){
+    protected Car(int y, double p, double l, String f){
         year = y;
         price = p;
         litres = l;
         fuel = new Fuel(f);
     }
 
-    public Car(int y, double p, double l, int f){
+    protected Car(int y, double p, double l, int f){
         year = y;
         price = p;
         litres = l;
