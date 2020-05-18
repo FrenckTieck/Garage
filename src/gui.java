@@ -20,11 +20,13 @@ public class gui {
     public JPanel current;
     public JPanel previous;
     public JPanel login;
+    public JPanel signUp;
     public String[] brands = {"BMVV", "AUDO", "CITVAN", "NISCAN", "VALVA", "TOYO", ""};
 
     public gui(CarFactory c, UserFactory u){
         car = null;
         login = null;
+        signUp = null;
 
         cars = c;
         users = u;
@@ -97,8 +99,8 @@ public class gui {
             });
             JLabel y = new JLabel(String.valueOf(c1.getYear()));
             JLabel p = new JLabel("€" + String.valueOf(c1.getPrice()));
-            JLabel l = new JLabel(String.valueOf(c1.getLitres()));
-            JLabel f = new JLabel(c1.getFuel().getFuel()+" litres");
+            JLabel l = new JLabel(String.valueOf(c1.getLitres()+" litres"));
+            JLabel f = new JLabel(c1.getFuel().getFuel());
             JLabel s = new JLabel("<html><br/></html>");
             JLabel imageLabel = null;
 
@@ -141,7 +143,8 @@ public class gui {
         }
 
         JScrollPane sp = new JScrollPane(cars);
-        sp.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        sp.getVerticalScrollBar().setUnitIncrement(16);
+        sp.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         sp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         sp.setBounds(50,30,1500,1000);
         home.add(sp);
@@ -185,6 +188,7 @@ public class gui {
                     if(l){
                         t.setText("");
                         pt.setText("");
+                        message.setText("");
                         login.setVisible(false);
                         previous.setVisible(true);
                         current = previous;
@@ -212,7 +216,69 @@ public class gui {
     }
 
     public void signUpPage(){
+        if(signUp == null){
+            signUp = new JPanel();
+            signUp.setLayout(new BoxLayout(signUp, BoxLayout.Y_AXIS));
+            JLabel kop = new JLabel("Sign Up");
+            kop.setFont(new Font("Verdana", 1, 30));
+            signUp.add(BorderLayout.EAST, kop);
 
+            JPanel u = new JPanel();
+            u.setLayout(new BoxLayout(u, BoxLayout.X_AXIS));
+            JLabel us = new JLabel("username");
+            u.add(us);
+            JTextField t = new JTextField();
+            t.setMaximumSize(new Dimension(500, 50));
+            u.add(t);
+            signUp.add(u);
+
+            JPanel p = new JPanel();
+            p.setLayout(new BoxLayout(p, BoxLayout.X_AXIS));
+            JLabel pa = new JLabel("password");
+            p.add(pa);
+            JTextField pt = new JTextField();
+            pt.setMaximumSize(new Dimension(500, 50));
+            p.add(pt);
+            signUp.add(p);
+
+            JLabel message = new JLabel();
+            JButton b = new JButton("Submit");
+            b.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if(pt.getText().length() > 4){
+                        boolean s = singingUp(t.getText(), pt.getText());
+                        if(s){
+                            logginIn(t.getText(), pt.getText());
+                            t.setText("");
+                            pt.setText("");
+                            message.setText("");
+                            signUp.setVisible(false);
+                            previous.setVisible(true);
+                            current = previous;
+                            previous = null;
+                            menuLogin();
+                            frame.invalidate();
+                            frame.validate();
+                        } else {
+                            message.setText("<html><font color='red'>Username Taken</font></html>");
+                        }
+                    } else {
+                        message.setText("<html><font color='red'>Password to short</font></html>");
+                    }
+                }
+            });
+
+            signUp.add(BorderLayout.EAST, b);
+            signUp.add(BorderLayout.AFTER_LAST_LINE, message);
+            frame.add(BorderLayout.CENTER, signUp);
+        }
+        current.setVisible(false);
+        signUp.setVisible(true);
+        previous = current;
+        current = signUp;
+        frame.invalidate();
+        frame.validate();
     }
 
     public int brand(Car c){
@@ -285,9 +351,9 @@ public class gui {
         y.setFont(new Font("Verdana", 1, 25));
         JLabel p = new JLabel("€" + String.valueOf(c.getPrice()));
         p.setFont(new Font("Verdana", 1, 25));
-        JLabel l = new JLabel(String.valueOf(c.getLitres()));
+        JLabel l = new JLabel(String.valueOf(c.getLitres()+" litres"));
         l.setFont(new Font("Verdana", 1, 25));
-        JLabel f = new JLabel(c.getFuel().getFuel()+" litres");
+        JLabel f = new JLabel(c.getFuel().getFuel());
         f.setFont(new Font("Verdana", 1, 25));
 
         text.add(n);
@@ -422,6 +488,10 @@ public class gui {
         menu.invalidate();
         menu.validate();
         menu.setVisible(true);
+    }
+
+    public boolean singingUp(String u, String p){
+        return users.addUser(u, p);
     }
 
 
