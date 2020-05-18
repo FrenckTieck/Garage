@@ -1,1 +1,0 @@
-Total Cars: 7, BMVV: 2, AUDO: 1, NISCAN: 1, VALVA: 1, TOYO: 1, CITVAN: 1, Total Value: 928000.0

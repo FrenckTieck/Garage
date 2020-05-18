@@ -100,7 +100,7 @@ public class gui {
                 }
             });
             JLabel y = new JLabel(String.valueOf(c1.getYear()));
-            JLabel p = new JLabel("€" + String.valueOf(c1.getPrice()));
+            JLabel p = new JLabel("£" + String.valueOf(c1.getPrice()));
             JLabel l = new JLabel(String.valueOf(c1.getLitres()+" litres"));
             JLabel f = new JLabel(c1.getFuel().getFuel());
             JLabel s = new JLabel("<html><br/></html>");
