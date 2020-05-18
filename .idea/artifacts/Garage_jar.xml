@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Garage:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Garage_jar</output-path>
+    <root id="archive" name="Garage.jar">
+      <element id="module-output" name="Garage" />
+    </root>
+  </artifact>
+</component>

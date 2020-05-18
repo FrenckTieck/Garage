@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileReader;
 import java.io.PrintWriter;
 
 public class gui {
@@ -22,6 +23,7 @@ public class gui {
     public JPanel login;
     public JPanel signUp;
     public String[] brands = {"BMVV", "AUDO", "CITVAN", "NISCAN", "VALVA", "TOYO", ""};
+    String path;
 
     public gui(CarFactory c, UserFactory u){
         car = null;
@@ -104,6 +106,19 @@ public class gui {
             JLabel s = new JLabel("<html><br/></html>");
             JLabel imageLabel = null;
 
+            path = "";
+
+            try{
+                path = new File(Main.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getPath();
+            } catch(Exception e){}
+
+            String[] words = path.split("\\\\");
+            words[words.length-1] = "";
+            path = words[0];
+            for(int in = 1; in < words.length-1; in++){
+                path += "\\" + words[in];
+            }
+
             try {
                 BufferedImage tempImage = null;
                 if(b == 0){
@@ -119,7 +134,7 @@ public class gui {
                 }else if (b == 5){
                     tempImage = ImageIO.read(new File(((TOYO) c1).getImage()));
                 }else {
-                    tempImage = ImageIO.read(new File("Images/car7.jpg"));
+                    tempImage = ImageIO.read(new File(path + "\\Images\\car7.jpg"));
                 }
 
                 double ratio = (double) tempImage.getHeight()/200;
@@ -325,7 +340,7 @@ public class gui {
             }else if (b == 5){
                 tempImage = ImageIO.read(new File(((TOYO) c).getImage()));
             }else {
-                tempImage = ImageIO.read(new File("Images/car7.jpg"));
+                tempImage = ImageIO.read(new File(path + "\\Images\\car7.jpg"));
             }
 
             double ratio = (double) tempImage.getHeight()/500;
@@ -441,7 +456,7 @@ public class gui {
 
     public void writeToFile(){
         try{
-            PrintWriter w = new PrintWriter("Printed Files/StockValue.txt", "UTF-8");
+            PrintWriter w = new PrintWriter(path + "\\StockValue.txt", "UTF-8");
             w.println(cars.printStockLevel());
             w.close();
         } catch (Exception e){
