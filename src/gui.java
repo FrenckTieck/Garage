@@ -183,6 +183,8 @@ public class gui {
                 public void actionPerformed(ActionEvent e) {
                     boolean l = logginIn(t.getText(), new String(pt.getPassword()));
                     if(l){
+                        t.setText("");
+                        pt.setText("");
                         login.setVisible(false);
                         previous.setVisible(true);
                         current = previous;
@@ -360,6 +362,15 @@ public class gui {
         JLabel username = new JLabel("Hello " + user.getUsername());
         username.setFont(new Font("Verdana", 1, 25));
         menu.add(BorderLayout.EAST, username);
+        menu.addSeparator();
+        JButton logout = new JButton("Logout");
+        logout.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                logout();
+            }
+        });
+        menu.add(BorderLayout.EAST, logout);
     }
 
     public void writeToFile(){
@@ -370,6 +381,47 @@ public class gui {
         } catch (Exception e){
             System.out.println(e.getMessage());
         }
+    }
+
+    public void logout(){
+        menu.removeAll();
+        user = null;
+        JButton b1 = new JButton("Back");
+        b1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                previous();
+            }
+        });
+
+        JButton b2 = new JButton("Login");
+        b2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                loginPage();
+            }
+        });
+        JButton b3 = new JButton("Sign Up");
+        b3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                signUpPage();
+            }
+        });
+        menu.add(b1);
+        menu.addSeparator();
+        menu.add(b2);
+        menu.addSeparator();
+        menu.add(b3);
+        menu.addSeparator();
+
+        JLabel header = new JLabel("Awesome Autos");
+        header.setFont(new Font("Comic Sans MS", 1, 36));
+        menu.add(BorderLayout.CENTER, header);
+        menu.setVisible(false);
+        menu.invalidate();
+        menu.validate();
+        menu.setVisible(true);
     }
 
 
