@@ -11,7 +11,7 @@ public class BMVV extends Car {
             this.setYear(y);
         }
         image = i;
-        this.setModel("BMVV" + m);
+        this.setModel("BMVV " + m);
     }
 
     public BMVV(int id, int y, double p, double l, String m, String f, String i) {
@@ -21,7 +21,7 @@ public class BMVV extends Car {
             this.setYear(y);
         }
         image = i;
-        this.setModel("BMVV" + m);
+        this.setModel("BMVV " + m);
     }
 
     public BMVV(int id, int y, double p, double l, String m, int f, String i) {
@@ -31,15 +31,15 @@ public class BMVV extends Car {
             this.setYear(y);
         }
         image = i;
-        this.setModel("BMVV" + m);
+        this.setModel("BMVV " + m);
     }
 
-    public String getModel() {
-        return model;
+    public void setImage(String image) {
+        this.image = image;
     }
 
-    public void setModel(String model) {
-        this.model = model;
+    public String getImage() {
+        return image;
     }
 
     @Override

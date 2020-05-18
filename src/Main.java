@@ -1,35 +1,26 @@
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import java.awt.*;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 
 public class Main {
 
     public static void main(String args[]) {
-        ArrayList<Integer> test = new ArrayList<Integer>();
-        test.add(1);
-        System.out.println(test.size());
+        CarFactory c = new CarFactory();
+        UserFactory u = new UserFactory();
+        c.addBMVV(2019, 20000, 125.25, "Model 1", 1, "Images/car1.jpg");
+        c.addAUDO(2018, 40000, 160.00, "Model 2", 1, "Images/car2.jpg");
+        c.addCITVAN(2014, 38000, 105.00, "Model 3", 1, "Images/car3.jpg");
+        c.addNISCAN(2013, 670000, 200.50, "Model 4", 1, "Images/car4.jpg");
+        c.addTOYO(2009, 50000, 130.25, "Model 5", 1, "Images/car5.jpg");
+        c.addVALVA(1990, 10000, 90.75, "Model 6", 1, "Images/car6.jpg");
+        c.addBMVV(2005, 100000, 150.00, "Model 7", 1, "Images/car7.jpg");
 
+        u.addAdmin("admin", "admin");
+        u.addUser("user", "user");
+        u.addAdmin("Kevin", "Kevin");
+        u.addUser("Josh", "Josh");
 
-
-        String userhome = System.getProperty("user.home");
-        JFileChooser chooser = new JFileChooser(userhome);
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("jpg, png, jpeg", "jpg", "png", "jpeg");
-        chooser.setFileFilter(filter);
-        int returnVal = chooser.showOpenDialog(null);
-        if(returnVal == JFileChooser.APPROVE_OPTION) {
-            System.out.println("You chose to open this file: " +
-                    chooser.getSelectedFile().getName());
-        }
-
-        try{
-            PrintWriter w = new PrintWriter("Printed Files/test.txt", "UTF-8");
-            w.println("test1");
-            w.close();
-        } catch (Exception e){
-            System.out.println(e.getMessage());
-        }
-
+        gui gui = new gui(c, u);
+        gui.frame.setVisible(true);
     }
 }

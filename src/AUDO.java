@@ -11,7 +11,7 @@ public class AUDO extends Car {
             this.setYear(y);
         }
         image = i;
-        this.setModel("AUDO" + m);
+        this.setModel("AUDO " + m);
     }
 
     public AUDO(int id, int y, double p, double l, String m, String f, String i) {
@@ -21,7 +21,7 @@ public class AUDO extends Car {
             this.setYear(y);
         }
         image = i;
-        this.setModel("AUDO" + m);
+        this.setModel("AUDO " + m);
     }
 
     public AUDO(int id, int y, double p, double l, String m, int f, String i) {
@@ -31,15 +31,7 @@ public class AUDO extends Car {
             this.setYear(y);
         }
         image = i;
-        this.setModel("AUDO" + m);
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
+        this.setModel("AUDO " + m);
     }
 
     @Override
@@ -54,5 +46,13 @@ public class AUDO extends Car {
         Car c1 = this;
         Car c2 = a;
         return c1.equals(c2) && model.equals(a.getModel());
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getImage() {
+        return image;
     }
 }

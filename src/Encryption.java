@@ -6,28 +6,28 @@ public class Encryption {
 
     private Cipher cipher;
     private Key key;
-    private String text;
-    private String bitKey = "n2r5u8x/A?D(G+Kb";
+    private byte[] text;
+    private String bitKey = "asdfgghkluqwerty";
 
     public Encryption(String t){
         key = new SecretKeySpec(bitKey.getBytes(), "AES");
         try {
-            Cipher cipher = Cipher.getInstance("AES");
+            cipher = Cipher.getInstance("AES");
             cipher.init(Cipher.ENCRYPT_MODE, key);
-            text = new String(cipher.doFinal(t.getBytes()));
+            text = cipher.doFinal(t.getBytes());
         } catch(Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
     public String getText() {
-        return text;
+        return new String(text);
     }
 
     public String decrypt(){
         try {
             cipher.init(Cipher.DECRYPT_MODE, key);
-            return new String(cipher.doFinal(text.getBytes()));
+            return new String(cipher.doFinal(text));
         } catch(Exception e){
             return e.getMessage();
         }
@@ -36,7 +36,7 @@ public class Encryption {
     public void setText(String t) {
         try{
             cipher.init(Cipher.ENCRYPT_MODE, key);
-            this.text = new String(cipher.doFinal(t.getBytes()));
+            this.text = cipher.doFinal(t.getBytes());
         } catch (Exception e){
             System.out.println(e.getMessage());
         }

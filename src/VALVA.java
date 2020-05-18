@@ -11,7 +11,7 @@ public class VALVA extends Car {
             this.setYear(y);
         }
         image = i;
-        this.setModel("VALVA" + m);
+        this.setModel("VALVA " + m);
     }
 
     public VALVA(int id, int y, double p, double l, String m, String f, String i) {
@@ -21,7 +21,7 @@ public class VALVA extends Car {
             this.setYear(y);
         }
         image = i;
-        this.setModel("NISCAN" + m);
+        this.setModel("VALVA " + m);
     }
 
     public VALVA(int id, int y, double p, double l, String m, int f, String i) {
@@ -31,15 +31,15 @@ public class VALVA extends Car {
             this.setYear(y);
         }
         image = i;
-        this.setModel("NISCAN" + m);
+        this.setModel("VALVA " + m);
     }
 
-    public String getModel() {
-        return model;
+    public String getImage() {
+        return image;
     }
 
-    public void setModel(String model) {
-        this.model = model;
+    public void setImage(String image) {
+        this.image = image;
     }
 
     @Override
